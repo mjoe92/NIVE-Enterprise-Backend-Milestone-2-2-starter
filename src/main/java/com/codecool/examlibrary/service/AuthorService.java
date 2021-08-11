@@ -8,37 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class AuthorService {
+public class AuthorService extends BaseService<Author> {
 
-    private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
 
     public AuthorService(AuthorRepository authorRepository,
                          BookRepository bookRepository) {
-        this.authorRepository = authorRepository;
+        super(authorRepository);
         this.bookRepository = bookRepository;
-    }
-
-    public List<Author> listAll() {
-        return authorRepository.findAll();
-    }
-
-    public Optional<Author> findById(Long id) {
-        return authorRepository.findById(id);
-    }
-
-    public Author save(Author author) {
-        authorRepository.save(author);
-        return author;
-    }
-
-    public void deleteById(Long id) {
-        authorRepository.deleteById(id);
     }
 
     public List<Book> listAllBooksByAuthorId(Long id) {
@@ -49,7 +29,7 @@ public class AuthorService {
 
     public List<Author> listAllWithMinBookNumber(Integer c) {
         List<Author> authorsMoreThanCBooks = new ArrayList<>();
-        for (Author author : authorRepository.findAll()) {
+        for (Author author : repository.findAll()) {
             long count = bookRepository.findAll().stream()
                     .filter(book -> book.getAuthor().equals(author))
                     .count();
