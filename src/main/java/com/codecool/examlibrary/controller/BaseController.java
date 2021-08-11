@@ -1,7 +1,6 @@
 package com.codecool.examlibrary.controller;
 
 import com.codecool.examlibrary.handler.HttpResponseHandler;
-import com.codecool.examlibrary.model.Author;
 import com.codecool.examlibrary.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.codecool.examlibrary.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,6 +16,7 @@ public class Book {
     private int year;
 
     @ManyToOne
+    @JsonIgnoreProperties("books")
     private Author author;
 
 }

@@ -11,12 +11,8 @@ import java.util.stream.Collectors;
 @Service
 public class BookService extends BaseService<Book> {
 
-    private final AuthorRepository authorRepository;
-
-    public BookService(BookRepository bookRepository,
-                       AuthorRepository authorRepository) {
+    public BookService(BookRepository bookRepository) {
         super(bookRepository);
-        this.authorRepository = authorRepository;
     }
 
     public List<Book> listAllByYear(Integer year) {

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,6 @@ public class Author {
 
     @OneToMany
     @JsonIgnore
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
 }
